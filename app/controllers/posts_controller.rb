@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
   end
 
   def create
@@ -9,7 +10,9 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to posts_path
+      flash[:notice] = 'El post ha sido creado con éxito'
     else
+      flash[:alert] = 'Algo fallo, el post no ha sido creado con éxito'
       render :new
     end
   end
@@ -21,17 +24,20 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    flash[:notice] = 'El post ha sido actualizado con éxito'
 
     if @post.save
       redirect_to posts_path
     else
       render :edit
+      flash[:alert] = 'Algo fallo, el post no ha sido actualizado con éxito'
     end
   end
 
   def destroy
     @post =Post.find(params[:id])
     @post.destroy
+    flash[:notice] = 'El post ha sido eliminado'
     redirect_to posts_path
   end
 
