@@ -3,31 +3,27 @@
   <% if @post.errors.any? %>
     <div id="errors_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %>prohibited this post from being saved: </h2>
-
       <ul>
         <%= @post.errors.full_messages.each do|message| %>
-        <li><%= message %></li>
+          <li><%= message %></li>
         <%end %>
       </ul>
     </div>
   <%end %>
 
-
-
   <div class = "form-group">
-    <%= f.label :author, 'autor:' %>
-    <%= f.text_field :author, required: true %>
+    <%= f.label :author, 'Author:' %>
+    <%= f.text_field :author, required: true, class: 'form-control' %>
   </div>
 
   <div class = "form-group">
-    <%= f.label :title, 'title' %>
-    <%= f.text_field :title, required: true %>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title, required: true,class: 'form-control' %>
   </div>
 
-
   <div class = "form-group">
-    <%= f.label :content, 'contenido' %>
-    <%= f.text_area :content, rows: 12, required: true%>
+    <%= f.label :content, 'Content' %>
+    <%= f.text_area :content, rows: 12, required: true, class: 'form-control'%>
   </div>
 
   <div class = "form-group">
