@@ -43,6 +43,8 @@ before_action :authenticate_user!, except: [ :show, :index ]
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def index
